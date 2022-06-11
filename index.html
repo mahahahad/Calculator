@@ -1,15 +1,193 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta name="color-scheme" content="dark light">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width initial-scale=1">
-<link rel="stylesheet" href="main.css">
-<title>Calculator</title>
-</head>
-<body>
-<div class="calculator">
- 
-</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="color-scheme" content="dark light" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"       rel="stylesheet">
+    <link rel="stylesheet" href="./dist/CSS/main.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="result">
+        <div class="result__previous">
+          <h1 type="text" class="result__previous__text"></h1>
+        </div>
+        <div class="result__active">
+          <h1 type="text" class="result__active__text"></h1>
+        </div>
+      </div>
+      <button class="more">
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 48 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="chevron-up"
+        >
+          <path
+            d="M12.586 26.586L15.414 29.414L24 20.828L32.586 29.414L35.414 26.586L24 15.172L12.586 26.586Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <div class="numpad">
+        <div class="numbers">
+          <button class="num-1 calculator__number" value="1">1</button>
+          <button class="num-2 calculator__number" value="2">2</button>
+          <button class="num-3 calculator__number" value="3">3</button>
+          <button class="num-4 calculator__number" value="4">4</button>
+          <button class="num-5 calculator__number" value="5">5</button>
+          <button class="num-6 calculator__number" value="6">6</button>
+          <button class="num-7 calculator__number" value="7">7</button>
+          <button class="num-8 calculator__number" value="8">8</button>
+          <button class="num-9 calculator__number" value="9">9</button>
+          <button class="num-0 calculator__number" value="0">0</button>
+          <button class="decimal calculator__number" value=".">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 19C16.7956 19 17.5587 18.6839 18.1213 18.1213C18.6839 17.5587 19 16.7956 19 16C19 15.2044 18.6839 14.4413 18.1213 13.8787C17.5587 13.3161 16.7956 13 16 13C15.2044 13 14.4413 13.3161 13.8787 13.8787C13.3161 14.4413 13 15.2044 13 16C13 16.7956 13.3161 17.5587 13.8787 18.1213C14.4413 18.6839 15.2044 19 16 19V19Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="operators">
+          <button class="oper-ac calculator__operator">AC</button>
+          <button class="oper-del calculator__operator">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M29.2 5H8.97995C8.59014 5.00232 8.20628 5.09576 7.85901 5.27287C7.51175 5.44997 7.21072 5.70583 6.97995 6.02L0.779953 14.52C0.46771 14.9503 0.299561 15.4683 0.299561 16C0.299561 16.5317 0.46771 17.0497 0.779953 17.48L6.95995 26C7.1918 26.313 7.49307 26.5681 7.84009 26.745C8.18711 26.922 8.57043 27.0161 8.95995 27.02H29.2C29.863 27.02 30.4989 26.7566 30.9677 26.2878C31.4366 25.8189 31.7 25.183 31.7 24.52V7.5C31.7 6.83696 31.4366 6.20107 30.9677 5.73223C30.4989 5.26339 29.863 5 29.2 5ZM29.2 24.5H8.97995L2.79995 16L8.97995 7.5H29.2V24.5Z"
+                fill="currentColor"
+              />
+              <path
+                d="M15.72 21.1L19.7 17.66L23.68 21.1L25.32 19.22L21.62 16L25.32 12.78L23.68 10.9L19.7 14.34L15.72 10.9L14.08 12.78L17.8 16L14.08 19.22L15.72 21.1V21.1Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button class="oper-multiply calculator__operator" value="×">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_4_78)">
+                <path
+                  d="M16.0312 2.4L13.6313 0L8.03125 5.6L2.43125 0L0.03125 2.4L5.63125 8L0.03125 13.6L2.43125 16L8.03125 10.4L13.6313 16L16.0312 13.6L10.4312 8L16.0312 2.4Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_4_78">
+                  <rect width="16" height="16" fill="currentColor" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <button class="oper-divide calculator__operator" value="÷">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_5_96)">
+                <path
+                  d="M0 6.46768V9.13331H16V6.46768H0ZM9.33438 -0.196899H6.66875V2.46873H9.33438V-0.196899ZM6.66563 15.801H9.33125V13.1354H6.66563V15.801Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_5_96">
+                  <rect width="16" height="16" fill="currentColor" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <button class="oper-add calculator__operator" value="+">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_4_82)">
+                <path
+                  d="M6.49284 0.333313H9.12442C9.35834 0.333313 9.4753 0.392572 9.4753 0.511091V16.1555C9.4753 16.2741 9.35834 16.3333 9.12442 16.3333H6.49284C6.25893 16.3333 6.14197 16.2741 6.14197 16.1555V0.511091C6.14197 0.392572 6.25893 0.333313 6.49284 0.333313Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M0.328014 6.33331H15.9559C16.08 6.33331 16.142 6.45027 16.142 6.68419V9.31577C16.142 9.54969 16.08 9.66665 15.9559 9.66665H0.328014C0.203983 9.66665 0.141968 9.54969 0.141968 9.31577V6.68419C0.141968 6.45027 0.203983 6.33331 0.328014 6.33331Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_4_82">
+                  <rect width="16" height="16" fill="currentColor" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <button class="oper-subtract calculator__operator" value="-">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_4_85)">
+                <path
+                  d="M15.9681 6.33331H0.315881C0.220229 6.33331 0.141968 6.49121 0.141968 6.68419V9.31577C0.141968 9.50875 0.220229 9.66665 0.315881 9.66665H15.9681C16.0637 9.66665 16.142 9.50875 16.142 9.31577V6.68419C16.142 6.49121 16.0637 6.33331 15.9681 6.33331Z"
+                  fill="currentColor"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_4_85">
+                  <rect width="16" height="16" fill="currentColor" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <button class="oper-equal calculator__operator">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 4.5V7.16563H16V4.5H0ZM0 12.5H16V9.83438H0V12.5Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./dist/JS/index.js"></script>
+  </body>
 </html>
