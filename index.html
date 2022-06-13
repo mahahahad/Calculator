@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Mahad." />
     <meta name="description" content="A Calculator. That's it." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"       rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./dist/CSS/main.css" />
     <title>Calculator</title>
   </head>
@@ -23,7 +26,7 @@
           <h1 type="text" class="result__active__text"></h1>
         </div>
       </div>
-      <button class="more">
+      <div tabindex="0" class="more" role="display more options">
         <svg
           width="48"
           height="48"
@@ -37,20 +40,40 @@
             fill="currentColor"
           />
         </svg>
-      </button>
+      </div>
       <div class="numpad">
         <div class="numbers">
-          <button class="num-1 calculator__number" value="1">1</button>
-          <button class="num-2 calculator__number" value="2">2</button>
-          <button class="num-3 calculator__number" value="3">3</button>
-          <button class="num-4 calculator__number" value="4">4</button>
-          <button class="num-5 calculator__number" value="5">5</button>
-          <button class="num-6 calculator__number" value="6">6</button>
-          <button class="num-7 calculator__number" value="7">7</button>
-          <button class="num-8 calculator__number" value="8">8</button>
-          <button class="num-9 calculator__number" value="9">9</button>
-          <button class="num-0 calculator__number" value="0">0</button>
-          <button class="decimal calculator__number" value=".">
+          <button class="num-1 calculator__number" value="1" tabindex="0">
+            1
+          </button>
+          <button class="num-2 calculator__number" value="2" tabindex="-1">
+            2
+          </button>
+          <button class="num-3 calculator__number" value="3" tabindex="-1">
+            3
+          </button>
+          <button class="num-4 calculator__number" value="4" tabindex="-1">
+            4
+          </button>
+          <button class="num-5 calculator__number" value="5" tabindex="-1">
+            5
+          </button>
+          <button class="num-6 calculator__number" value="6" tabindex="-1">
+            6
+          </button>
+          <button class="num-7 calculator__number" value="7" tabindex="-1">
+            7
+          </button>
+          <button class="num-8 calculator__number" value="8" tabindex="-1">
+            8
+          </button>
+          <button class="num-9 calculator__number" value="9" tabindex="-1">
+            9
+          </button>
+          <button class="num-0 calculator__number" value="0" tabindex="-1">
+            0
+          </button>
+          <button class="decimal calculator__number" value="." tabindex="-1">
             <svg
               width="32"
               height="32"
@@ -66,8 +89,8 @@
           </button>
         </div>
         <div class="operators">
-          <button class="oper-ac calculator__operator">AC</button>
-          <button class="oper-del calculator__operator">
+          <button tabindex="0" class="oper-ac calculator__operator">AC</button>
+          <button tabindex="-1" class="oper-del calculator__operator">
             <svg
               width="32"
               height="32"
@@ -85,7 +108,11 @@
               />
             </svg>
           </button>
-          <button class="oper-multiply calculator__operator" value="×">
+          <button
+            tabindex="-1"
+            class="oper-multiply calculator__operator"
+            value="×"
+          >
             <svg
               width="16"
               height="16"
@@ -106,7 +133,11 @@
               </defs>
             </svg>
           </button>
-          <button class="oper-divide calculator__operator" value="÷">
+          <button
+            tabindex="-1"
+            class="oper-divide calculator__operator"
+            value="÷"
+          >
             <svg
               width="16"
               height="16"
@@ -127,7 +158,7 @@
               </defs>
             </svg>
           </button>
-          <button class="oper-add calculator__operator" value="+">
+          <button tabindex="-1" class="oper-add calculator__operator" value="+">
             <svg
               width="16"
               height="16"
@@ -152,7 +183,11 @@
               </defs>
             </svg>
           </button>
-          <button class="oper-subtract calculator__operator" value="-">
+          <button
+            tabindex="-1"
+            class="oper-subtract calculator__operator"
+            value="-"
+          >
             <svg
               width="16"
               height="16"
@@ -173,7 +208,7 @@
               </defs>
             </svg>
           </button>
-          <button class="oper-equal calculator__operator">
+          <button tabindex="-1" class="oper-equal calculator__operator">
             <svg
               width="16"
               height="16"
