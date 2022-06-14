@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="color-scheme" content="dark light" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,26 +19,39 @@
     <div class="calculator">
       <div class="result">
         <div class="result__previous">
-          <h1 type="text" class="result__previous__text"></h1>
+          <h1 class="result__previous__text"></h1>
         </div>
         <div class="result__active">
-          <h1 type="text" class="result__active__text"></h1>
+          <h1 class="result__active__text"></h1>
         </div>
       </div>
-      <div tabindex="0" class="more" role="display more options">
+      <div
+        tabindex="0"
+        role="display more options template, currently empty"
+        class="more"
+      >
         <svg
           width="48"
           height="48"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="chevron-up"
+          class="more__chevron-up"
         >
           <path
             d="M12.586 26.586L15.414 29.414L24 20.828L32.586 29.414L35.414 26.586L24 15.172L12.586 26.586Z"
             fill="currentColor"
           />
         </svg>
+        <div class="more__dark-mode-container">
+          <label for="isDarkMode">Dark Mode</label>
+          <input
+            type="checkbox"
+            id="isDarkMode"
+            class="checkbox"
+            checked="true"
+          />
+        </div>
       </div>
       <div class="numpad">
         <div class="numbers">
@@ -225,6 +237,6 @@
         </div>
       </div>
     </div>
-    <script src="./dist/JS/index.js"></script>
+    <script src="./dist/JS/index.js" type="module"></script>
   </body>
 </html>

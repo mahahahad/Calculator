@@ -1,14 +1,12 @@
-let resultActive = document.querySelector(".result__active__text"),
-  resultPrevious = document.querySelector(".result__previous__text"),
-  numbers = document.querySelectorAll(".calculator__number"),
-  multiplyBtn = document.querySelector(".oper-multiply"),
-  divideBtn = document.querySelector(".oper-divide"),
-  addBtn = document.querySelector(".oper-add"),
-  subtractBtn = document.querySelector(".oper-subtract"),
-  equalBtn = document.querySelector(".oper-equal"),
-  ACBtn = document.querySelector(".oper-ac"),
-  deleteBtn = document.querySelector(".oper-del"),
-  operators = [multiplyBtn, divideBtn, addBtn, subtractBtn];
+import {
+  resultActive,
+  resultPrevious,
+  numbers,
+  equalBtn,
+  ACBtn,
+  deleteBtn,
+  operators,
+} from "./modules/calculatorVariables.js";
 
 class Calculator {
   constructor(currentNumberElement, previousNumberElement) {
@@ -55,6 +53,7 @@ class Calculator {
         break;
 
       case "÷":
+        if (currentNumber === 0) return;
         result = previousNumber / currentNumber;
         break;
 
@@ -111,7 +110,7 @@ deleteBtn.onclick = function () {
   calculator.updateInterface();
 };
 
-document.addEventListener("keypress", (e) => {
+document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "*":
       calculator.operatorPick("×");
@@ -161,6 +160,9 @@ moreBtn.addEventListener("keypress", (e) => {
   }
 });
 
+// Code from web.dev to help with accessibility
+// and focusing on buttons with arrow keys
+
 // Copyright 2018 Google LLC.
 // SPDX-License-Identifier: Apache-2.0
 
@@ -179,6 +181,7 @@ const numpadOperators = document.querySelector(".operators");
 numpadNumbers.addEventListener("keydown", onKeyDown(3, numpadNumbers));
 numpadOperators.addEventListener("keydown", onKeyDown(2, numpadOperators));
 numpadNumbers.addEventListener("click", onClick(numpadNumbers));
+numpadOperators.addEventListener("click", onClick(numpadOperators));
 
 function onKeyDown(columns, array) {
   return function (event) {
@@ -211,7 +214,7 @@ function onClick(array) {
     if (buttons.indexOf(event.target) == -1) {
       return;
     }
-    activate(event.target);
+    activate(event.target, array);
   };
 }
 
@@ -272,3 +275,6 @@ function activate(item, array) {
   item.tabIndex = 0;
   item.focus();
 }
+
+// Light mode is done, Add dark mode through window.matchMedia('(prefers-color-scheme: dark)')
+// preferably in another file for better understanding
