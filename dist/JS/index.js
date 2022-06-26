@@ -147,19 +147,6 @@ document.addEventListener("keydown", (e) => {
 let moreBtn = document.querySelector(".more"),
   numpad = document.querySelector(".numpad");
 
-moreBtn.onclick = function () {
-  moreBtn.classList.toggle("expanded");
-  numpad.classList.toggle("condensed");
-};
-
-moreBtn.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    moreBtn.click();
-    alert("Bruh");
-  }
-});
-
 // Code from web.dev to help with accessibility
 // and focusing on buttons with arrow keys
 
@@ -275,6 +262,67 @@ function activate(item, array) {
   item.tabIndex = 0;
   item.focus();
 }
-
-// Light mode is done, Add dark mode through window.matchMedia('(prefers-color-scheme: dark)')
+function toggleDark() {
+  document.querySelector("html").style.setProperty("color-scheme", "dark");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-background", "#111111");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-primary", "hsl(312, 55%, 20%)");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-primary--transparent", "hsl(312, 35%, 10%)");
+}
+function toggleLight() {
+  document.querySelector("html").style.setProperty("color-scheme", "light");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-background", "#fcfcfc");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-primary", "hsl(78, 67%, 60%)");
+  document
+    .querySelector("html")
+    .style.setProperty("--color-primary--transparent", "hsl(78, 87%, 80%)");
+}
+// Light mode is done, Add dark mode through
 // preferably in another file for better understanding
+let darkModeCheckbox = document.querySelector("#isDarkMode");
+
+window.matchMedia("(prefers-color-scheme: dark)").onchange = function () {
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    toggleDark();
+    darkModeCheckbox.checked = true;
+  } else {
+    toggleLight();
+    darkModeCheckbox.checked = false;
+  }
+};
+
+darkModeCheckbox.onclick = function () {
+  if (darkModeCheckbox.checked == true) {
+    toggleDark();
+  } else {
+    toggleLight();
+  }
+};
+
+moreBtn.addEventListener("click", function () {
+  moreBtn.classList.toggle("expanded");
+  numpad.classList.toggle("condensed");
+  moreBtn.classList.contains("expanded")
+    ? darkModeCheckbox.setAttribute("tabIndex", "0")
+    : darkModeCheckbox.setAttribute("tabIndex", "-1");
+});
+// moreBtn.onclick = function () {
+//   moreBtn.classList.toggle("expanded");
+//   numpad.classList.toggle("condensed");
+// };
+
+moreBtn.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    // e.preventDefault();
+    moreBtn.click();
+  }
+});

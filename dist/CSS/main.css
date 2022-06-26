@@ -13,6 +13,7 @@
 
   overflow-x: hidden;
   font-family: "Plus Jakarta Sans";
+  transition: 300ms var(--easing);
 }
 
 /*  || GENERAL STYLES */
