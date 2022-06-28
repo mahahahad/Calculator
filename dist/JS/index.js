@@ -8,76 +8,11 @@ import {
   operators,
 } from "./modules/calculatorVariables.js";
 
-class Calculator {
-  constructor(currentNumberElement, previousNumberElement) {
-    this.currentNumberElement = currentNumberElement;
-    this.previousNumberElement = previousNumberElement;
-    this.allClear();
-  }
+import { toggleLight, toggleDark } from "./modules/themes.js";
 
-  allClear() {
-    this.currentNumber = "";
-    this.previousNumber = "";
-    this.operator = "";
-  }
+import { darkModeCheckbox, moreBtn, numpad } from "./modules/DOMElements.js";
 
-  deleteCharacter() {
-    this.currentNumber = this.currentNumber.toString().slice(0, -1);
-  }
-
-  appendNumber(number) {
-    if (number === "." && this.currentNumber.includes(".")) return;
-    this.currentNumber += number.toString();
-  }
-
-  operatorPick(operator) {
-    if (this.currentNumber === "") return;
-    if (this.previousNumber) {
-      this.evaluate();
-    }
-    this.operator = operator;
-    this.previousNumber = this.currentNumber + " " + operator;
-    this.currentNumber = "";
-  }
-
-  evaluate() {
-    let result;
-    let previousNumber = parseFloat(this.previousNumber),
-      currentNumber = parseFloat(this.currentNumber);
-
-    if (isNaN(previousNumber) || isNaN(currentNumber)) return;
-
-    switch (this.operator) {
-      case "×":
-        result = previousNumber * currentNumber;
-        break;
-
-      case "÷":
-        if (currentNumber === 0) return;
-        result = previousNumber / currentNumber;
-        break;
-
-      case "+":
-        result = previousNumber + currentNumber;
-        break;
-
-      case "-":
-        result = previousNumber - currentNumber;
-        break;
-
-      default:
-        break;
-    }
-
-    this.currentNumber = result;
-    this.previousNumber = "";
-  }
-
-  updateInterface() {
-    this.currentNumberElement.innerText = this.currentNumber;
-    this.previousNumberElement.innerText = this.previousNumber;
-  }
-}
+import { Calculator } from "./modules/calculatorClass.js";
 
 let calculator = new Calculator(resultActive, resultPrevious);
 
@@ -143,9 +78,6 @@ document.addEventListener("keydown", (e) => {
       break;
   }
 });
-
-let moreBtn = document.querySelector(".more"),
-  numpad = document.querySelector(".numpad");
 
 // Code from web.dev to help with accessibility
 // and focusing on buttons with arrow keys
@@ -262,67 +194,24 @@ function activate(item, array) {
   item.tabIndex = 0;
   item.focus();
 }
-function toggleDark() {
-  document.querySelector("html").style.setProperty("color-scheme", "dark");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-background", "#111111");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-primary", "hsl(312, 55%, 20%)");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-primary--transparent", "hsl(312, 35%, 10%)");
-}
-function toggleLight() {
-  document.querySelector("html").style.setProperty("color-scheme", "light");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-background", "#fcfcfc");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-primary", "hsl(78, 67%, 60%)");
-  document
-    .querySelector("html")
-    .style.setProperty("--color-primary--transparent", "hsl(78, 87%, 80%)");
-}
-// Light mode is done, Add dark mode through
-// preferably in another file for better understanding
-let darkModeCheckbox = document.querySelector("#isDarkMode");
-
-window.matchMedia("(prefers-color-scheme: dark)").onchange = function () {
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    toggleDark();
-    darkModeCheckbox.checked = true;
-  } else {
-    toggleLight();
-    darkModeCheckbox.checked = false;
-  }
-};
-
-darkModeCheckbox.onclick = function () {
-  if (darkModeCheckbox.checked == true) {
-    toggleDark();
-  } else {
-    toggleLight();
-  }
-};
 
 moreBtn.addEventListener("click", function () {
   moreBtn.classList.toggle("expanded");
   numpad.classList.toggle("condensed");
-  moreBtn.classList.contains("expanded")
-    ? darkModeCheckbox.setAttribute("tabIndex", "0")
-    : darkModeCheckbox.setAttribute("tabIndex", "-1");
+  if (moreBtn.classList.contains("expanded")) {
+    darkModeCheckbox.setAttribute("tabIndex", "0");
+    document.querySelector(".more__chevron-up").style.transform =
+      "rotate(180deg)";
+  } else {
+    // If checkbox is not in focus range, then don't make it accessible through keyboard
+    darkModeCheckbox.setAttribute("tabIndex", "-1");
+    document.querySelector(".more__chevron-up").style.transform =
+      "rotate(0deg)";
+  }
 });
-// moreBtn.onclick = function () {
-//   moreBtn.classList.toggle("expanded");
-//   numpad.classList.toggle("condensed");
-// };
 
 moreBtn.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    // e.preventDefault();
     moreBtn.click();
   }
 });
