@@ -1,15 +1,25 @@
 import { darkModeCheckbox } from "./DOMElements.js";
 
-function toggleDark(BG = "#111111", PRIMARY = "hsl(312, 35%, 10%)") {
+function toggleDark(
+  BG = "#111111",
+  PRIMARY = "hsl(312, 35%, 10%)",
+  TEXT = "#FFFFFF"
+) {
   document.querySelector("html").style.setProperty("color-scheme", "dark");
   document.querySelector("html").style.setProperty("--color-background", BG);
   document.querySelector("html").style.setProperty("--color-primary", PRIMARY);
+  document.querySelector("html").style.setProperty("--color-text", TEXT);
 }
 
-function toggleLight(BG = "#f9f9f9", PRIMARY = "hsl(78, 87%, 80%)") {
+function toggleLight(
+  BG = "#F9F9F9",
+  PRIMARY = "hsl(78, 87%, 80%)",
+  TEXT = "#000000"
+) {
   document.querySelector("html").style.setProperty("color-scheme", "light");
   document.querySelector("html").style.setProperty("--color-background", BG);
   document.querySelector("html").style.setProperty("--color-primary", PRIMARY);
+  document.querySelector("html").style.setProperty("--color-text", TEXT);
 }
 
 if (window.matchMedia("(prefers-color-scheme: dark)").matches) {

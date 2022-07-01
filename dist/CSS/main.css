@@ -16,7 +16,7 @@
   font-family: "Plus Jakarta Sans";
   transition: 300ms var(--easing);
   transition-property: background-color;
-  color: var(--color-text);
+  color: var(--color-text) !important;
 }
 
 /*  || GENERAL STYLES */
@@ -87,7 +87,7 @@ button,
 .more__chevron-up,
 .numpad,
 .fab {
-  transition: .45s var(--easing);
+  transition: 0.45s var(--easing);
 }
 
 .result__active {
