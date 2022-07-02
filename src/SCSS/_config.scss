@@ -1,0 +1,37 @@
+@import url(./normalize.css);
+
+:root {
+  --result__display-height: 30%;
+  --calc__button-gap: 0.5rem;
+
+  --color-background: #f5f5f5;
+  --color-text: #000000;
+  --color-primary: hsl(78, 67%, 60%);
+  --color-primary--transparent: hsl(78, 87%, 80%);
+  --black-transparent: rgba(0, 0, 0, 0.1);
+
+  --easing: cubic-bezier(0.18, 0.6, 0, 0.88);
+
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans";
+  transition: 300ms var(--easing);
+  transition-property: background-color;
+  color: var(--color-text) !important;
+}
+::selection {
+  background-color: var(--color-primary);
+}
+body {
+  height: 100vh;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+h1 {
+  margin: 0;
+}
+button,
+.more {
+  cursor: pointer;
+  color: var(--color-text);
+}

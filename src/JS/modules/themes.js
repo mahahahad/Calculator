@@ -1,4 +1,22 @@
-import { darkModeCheckbox } from "./DOMElements.js";
+import { darkModeCheckbox } from "./DOMElements";
+
+// Add themes here
+const themes = [
+  {
+    name: "Light",
+    bg: "#f3e5f5",
+    primary: "#ab47bc",
+    text: "#4a148c",
+    category: "light",
+  },
+  {
+    name: "Dark",
+    bg: "#222222",
+    primary: "GoldenRod",
+    text: "#FFFFFF",
+    category: "dark",
+  },
+];
 
 function toggleDark(
   BG = "#111111",
@@ -30,7 +48,8 @@ if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
   darkModeCheckbox.checked = false;
 }
 
-// if user changes their system color scheme in the middle for some reason
+// if user changes their system color scheme
+// in the middle for some reason
 window.matchMedia("(prefers-color-scheme: dark)").onchange = function () {
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     toggleDark();
@@ -42,11 +61,13 @@ window.matchMedia("(prefers-color-scheme: dark)").onchange = function () {
 };
 
 darkModeCheckbox.onclick = function () {
-  if (darkModeCheckbox.checked == true) {
+  if (darkModeCheckbox.checked === true) {
     toggleDark("#111", "hsl(312, 35%, 10%)");
   } else {
     toggleLight();
   }
 };
+
+toggleLight(themes[0].bg, themes[0].primary, themes[0].text);
 
 export { toggleDark, toggleLight };
