@@ -16,26 +16,71 @@
     <title>Calculator</title>
   </head>
   <body>
+    <!--
+    SVG tags to improve readability because
+    having the raw SVG code everywhere was annoying me
+    Also maybe for performance
+     -->
+
+    <!-- Chevron Up -->
+    <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+      <path
+        id="chevron-up-icon"
+        d="m12.586 26.586 2.828 2.828L24 20.828l8.586 8.586 2.828-2.828L24 15.172 12.586 26.586Z"
+        fill="currentColor"
+      />
+    </svg>
+
+    <!-- Menu -->
+
+    <svg
+      id="menu-icon-complete"
+      width="0"
+      height="0"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="menu-icon"
+        d="M21 6V8H3V6H21ZM3 18H21V16H3V18ZM3 13H21V11H3V13Z"
+        fill="currentColor"
+      />
+      <text
+        x="28"
+        y="19"
+        id="menu-icon__text"
+        style="font: 600 1.3rem 'Plus Jakarta Sans'; fill: currentColor"
+      >
+        Menu
+      </text>
+    </svg>
+
+    <!-- Calculator Markup -->
     <div class="calculator">
-      <div class="menu">
+      <div class="menu expanded">
         <button class="fab" data-text="Menu">
-          <span class="icon">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style="vertical-align: top"
-            >
-              <path
-                d="M21 6V8H3V6H21ZM3 18H21V16H3V18ZM3 13H21V11H3V13Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
+          <svg
+            class="menu-icon-complete"
+            width="88"
+            height="24"
+            style="cursor: pointer"
+          >
+            <use href="#menu-icon" class="menu-icon" />
+            <use href="#menu-icon__text" class="menu-icon__text" />
+          </svg>
         </button>
+        <div class="theme-container">
+          <button class="menu__option">
+            <h1>Themes</h1>
+            <svg width="48" height="48">
+              <use href="#chevron-up-icon" />
+            </svg>
+          </button>
+          <div class="theme__content menu__content expanded">
+            <h2>Background Color</h2>
+          </div>
+        </div>
       </div>
+
       <div class="result">
         <div class="result__previous">
           <h1 class="result__previous__text"></h1>

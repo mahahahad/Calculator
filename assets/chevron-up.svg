@@ -1,3 +1,1 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.586 26.586L15.414 29.414L24 20.828L32.586 29.414L35.414 26.586L24 15.172L12.586 26.586Z" fill="white"/>
-</svg>
+<svg width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="chevron-up" d="m12.586 26.586 2.828 2.828L24 20.828l8.586 8.586 2.828-2.828L24 15.172 12.586 26.586Z" fill="currentColor"/></svg>

@@ -10,6 +10,9 @@ Also, seperate the CSS files for their respective purposes then combine into mai
 
 Perhaps a scientific mode
 
+The more options chevron stopped animating 
+
 ## Themes
 
 Make it easier to collaborate for others, perhaps by seperating the themes only into one file
+

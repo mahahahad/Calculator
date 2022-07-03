@@ -1,4 +1,4 @@
-import { darkModeCheckbox } from "./DOMElements";
+import { darkModeCheckbox, moreBtn, numpad, HTMLElement } from "./DOMElements";
 
 // Add themes here
 const themes = [
@@ -23,10 +23,11 @@ function toggleDark(
   PRIMARY = "hsl(312, 35%, 10%)",
   TEXT = "#FFFFFF"
 ) {
-  document.querySelector("html").style.setProperty("color-scheme", "dark");
-  document.querySelector("html").style.setProperty("--color-background", BG);
-  document.querySelector("html").style.setProperty("--color-primary", PRIMARY);
-  document.querySelector("html").style.setProperty("--color-text", TEXT);
+  HTMLElement.style.setProperty("color-scheme", "dark");
+  HTMLElement.style.setProperty("--color-background", BG);
+  HTMLElement.style.setProperty("--color-primary", PRIMARY);
+  HTMLElement.style.setProperty("--color-text", TEXT);
+  darkModeCheckbox.checked = true;
 }
 
 function toggleLight(
@@ -34,18 +35,17 @@ function toggleLight(
   PRIMARY = "hsl(78, 87%, 80%)",
   TEXT = "#000000"
 ) {
-  document.querySelector("html").style.setProperty("color-scheme", "light");
-  document.querySelector("html").style.setProperty("--color-background", BG);
-  document.querySelector("html").style.setProperty("--color-primary", PRIMARY);
-  document.querySelector("html").style.setProperty("--color-text", TEXT);
+  HTMLElement.style.setProperty("color-scheme", "light");
+  HTMLElement.style.setProperty("--color-background", BG);
+  HTMLElement.style.setProperty("--color-primary", PRIMARY);
+  HTMLElement.style.setProperty("--color-text", TEXT);
+  darkModeCheckbox.checked = false;
 }
 
 if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
   toggleDark();
-  darkModeCheckbox.checked = true;
 } else {
   toggleLight();
-  darkModeCheckbox.checked = false;
 }
 
 // if user changes their system color scheme
@@ -53,10 +53,8 @@ if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 window.matchMedia("(prefers-color-scheme: dark)").onchange = function () {
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     toggleDark();
-    darkModeCheckbox.checked = true;
   } else {
     toggleLight();
-    darkModeCheckbox.checked = false;
   }
 };
 
@@ -68,6 +66,23 @@ darkModeCheckbox.onclick = function () {
   }
 };
 
-toggleLight(themes[0].bg, themes[0].primary, themes[0].text);
+moreBtn.addEventListener("click", function () {
+  moreBtn.classList.toggle("expanded");
+  numpad.classList.toggle("condensed");
+  if (moreBtn.classList.contains("expanded")) {
+    darkModeCheckbox.setAttribute("tabIndex", "0");
+    document.querySelector(".more__chevron-up").style.transform =
+      "rotate(180deg)";
+  } else {
+    // If checkbox is not in focus range, then don't make it accessible through keyboard
+    darkModeCheckbox.setAttribute("tabIndex", "-1");
+    document.querySelector(".more__chevron-up").style.transform =
+      "rotate(0deg)";
+  }
+});
 
-export { toggleDark, toggleLight };
+moreBtn.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    moreBtn.click();
+  }
+});

@@ -1,12 +1,16 @@
 @import "config";
 .fab {
-  transition: 0.6s var(--easing);
+  appearance: none;
+  background: transparent;
+  border: none;
 }
 .menu {
   --fab-menu: 5rem;
   position: absolute;
   height: 100vh;
   width: 100vw;
+  box-sizing: border-box;
+  padding: 2rem;
   z-index: 2;
   background: var(--color-background);
   transition: clip-path 0.7s cubic-bezier(0.32, 0.45, 0.12, 0.83),
@@ -14,39 +18,51 @@
   clip-path: circle(
     var(--fab-menu) at calc(var(--fab-menu)) calc(var(--fab-menu))
   );
-
+  will-change: clip-path;
   &.expanded {
     background-color: var(--color-primary);
     clip-path: circle(135% at calc(var(--fab-menu)) calc(var(--fab-menu)));
   }
 }
-.fab {
+.menu__option {
+  cursor: pointer;
+  // width: 96%;
   border: none;
-  transform: translate(2rem, 2rem);
-  height: 3rem;
-  width: 6rem;
-  white-space: nowrap;
-  background-color: transparent;
-  font-weight: 600;
-  font-size: 1.2rem;
-  overflow: hidden;
-  .icon {
-    position: absolute;
-    left: 0;
+  background: transparent;
+  width: 100%;
+  border-bottom: 1px solid var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
-  &::after {
-    position: absolute;
-    left: 2rem;
-    content: attr(data-text);
-    transform: skewY(10deg) translateY(150%);
-    transition: 0.55s var(--easing);
-  }
-  &:hover {
-    &::after {
-      transform: skewY(0deg) translateY(0);
-    }
+}
+.theme-container {
+  margin-top: 4rem;
+}
+.menu__content {
+  margin-top: 2rem;
+  h2 {
+    font-weight: 400;
   }
 }
 
-// TODO add media query here to expand
-// the menu by default on mobiles
+// Active on devices that have a pointer,
+// Usually not mobiles I think
+@media (hover: hover) {
+  // Menu text animation
+  svg.menu-icon-complete {
+    .menu-icon__text {
+      transform: translateY(100%) skewY(10deg);
+      transition: 0.6s var(--easing);
+    }
+    &:hover {
+      .menu-icon__text {
+        transform: unset;
+      }
+    }
+  }
+}
