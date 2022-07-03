@@ -68,6 +68,4 @@ darkModeCheckbox.onclick = function () {
   }
 };
 
-toggleLight(themes[0].bg, themes[0].primary, themes[0].text);
-
 export { toggleDark, toggleLight };

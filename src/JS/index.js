@@ -1,9 +1,6 @@
-// Main file combining all the modules
-
 import { darkModeCheckbox, moreBtn, numpad } from "./modules/DOMElements";
-import "./modules/themes";
-import "./modules/menu";
 import "./modules/calculator";
+import "./modules/themes";
 import "./modules/tabRoving";
 
 moreBtn.addEventListener("click", function () {
