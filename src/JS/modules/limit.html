@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../dist/CSS/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital@1&display=swap"
+      rel="stylesheet"
+    />
+    <title>Limit</title>
+    <style>
+      input {
+        padding: 0.5rem;
+      }
+      button {
+        padding: 1rem 1.85rem;
+        border-radius: 8px;
+        border: 1px solid currentColor;
+        cursor: pointer;
+      }
+      .inline-input {
+        border: none;
+        border-bottom: 1px solid currentColor;
+        background: transparent;
+        width: 1ch;
+      }
+      .user-input {
+        display: flex;
+        flex-direction: column;
+      }
+      .function-overlay {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        height: 80vh;
+        width: 80vw;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(0.5rem);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      section {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="limit-button">
+      <button id="lim">lim f(x)</button>
+      <!-- The button the user presses on the main calculator -->
+    </section>
+    <section class="function-overlay">
+      <!-- Pop up to input user functions -->
+      <!-- Piecewise functions allowed -->
+      <div class="function__expression user-input">
+        <label for="userFunction">f(x) =</label>
+        <input type="text" id="userFunction" placeholder="x**2" />
+      </div>
+      for
+      <div class="function__lower-bound user-input">
+        <label for="lowerBound">Lower Bound</label>
+        <input type="number" id="lowerBound" placeholder="2" />
+      </div>
+      < x <
+      <div class="function__upper-bound user-input">
+        <label for="upperBound">Upper Bound</label>
+        <input type="number" id="upperBound" placeholder="4" />
+      </div>
+      <button id="newFunction">+</button>
+      <button id="addToExps">Add</button>
+    </section>
+    <section class="limit">
+      <div class="limit__symbol">
+        <!-- Main limit function -->
+        <h1>lim</h1>
+        <h2>x➜ <input type="text" class="inline-input" value="0" /></h2>
+      </div>
+      <div class="limit__function">
+        <h1>f(<input type="text" class="inline-input" value="x" />)</h1>
+      </div>
+      <button id="calculateLimit">Calculate</button>
+    </section>
+    <script>
+      function showFunctionInputOverlay() {
+        document.querySelector(".function-overlay").style.display = "flex";
+      }
+      document.querySelector("#lim").addEventListener("click", () => {
+        showFunctionInputOverlay();
+      });
+    </script>
+  </body>
+</html>
