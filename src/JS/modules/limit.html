@@ -80,24 +80,73 @@
       <button id="newFunction">+</button>
       <button id="addToExps">Add</button>
     </section>
-    <section class="limit">
+    <section class="limit" id="limit">
       <div class="limit__symbol">
         <!-- Main limit function -->
         <h1>lim</h1>
-        <h2>x➜ <input type="text" class="inline-input" value="0" /></h2>
+        <h2>
+          x➜
+          <input
+            type="text"
+            class="inline-input"
+            id="userLimitValue"
+            value="0"
+          />
+        </h2>
       </div>
       <div class="limit__function">
-        <h1>f(<input type="text" class="inline-input" value="x" />)</h1>
+        <h1>f(x)</h1>
       </div>
       <button id="calculateLimit">Calculate</button>
     </section>
-    <script>
+    <script type="module">
+      import {
+        expressions,
+        LWBs,
+        UPBs,
+        addToExps,
+        addToLWBs,
+        addToUPBs,
+      } from "./piecewise.js";
+
+      import { getLimit } from "./limit.js";
+
+      let functionOverlay = document.querySelector(".function-overlay");
+      let userFunction = document.querySelector("#userFunction");
+      let lowerBound = document.querySelector("#lowerBound");
+      let upperBound = document.querySelector("#upperBound");
       function showFunctionInputOverlay() {
-        document.querySelector(".function-overlay").style.display = "flex";
+        functionOverlay.style.display = "flex";
+      }
+      function hideFunctionInputOverlay() {
+        functionOverlay.style.display = "none";
       }
       document.querySelector("#lim").addEventListener("click", () => {
-        showFunctionInputOverlay();
+        if (expressions.length == 0) {
+          showFunctionInputOverlay();
+        } else {
+          // In the future, replace this with append limit symbol to display
+          window.open("#limit", "_self");
+        }
       });
+      document.querySelector("#addToExps").addEventListener("click", () => {
+        if (userFunction.value == "") {
+          return;
+        }
+        addToExps(userFunction.value);
+        addToLWBs(lowerBound.value);
+        addToUPBs(upperBound.value);
+
+        window.open("#limit", "_self");
+        hideFunctionInputOverlay();
+      });
+
+      document
+        .querySelector("#calculateLimit")
+        .addEventListener("click", () => {
+          let userLimitValue = document.querySelector("#userLimitValue");
+          console.log(getLimit(expressions, UPBs, LWBs, userLimitValue.value));
+        });
     </script>
   </body>
 </html>

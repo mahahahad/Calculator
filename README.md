@@ -1,8 +1,7 @@
-# Calculator
+# Limit
 
-Just another simple JavaScript calculator...
+Currently it works for piece wise functions, not at the intersection though apparently.
 
-At least this one looks nice
+Neither does it work for inifinity
 
-That's  
-That's it.
+but it works for single and multiple functions
