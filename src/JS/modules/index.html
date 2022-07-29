@@ -33,7 +33,9 @@
         flex-direction: column;
       }
       .function-overlay {
+        transition: opacity 250ms ease, transform 250ms ease;
         display: none;
+        opacity: 0;
         align-items: center;
         justify-content: space-between;
         position: fixed;
@@ -44,7 +46,7 @@
         backdrop-filter: blur(0.5rem);
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -55%);
       }
       section {
         height: 100vh;
@@ -56,6 +58,12 @@
     </style>
   </head>
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg" height="0" width="0">
+      <path
+        id="close-icon"
+        d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"
+      />
+    </svg>
     <section class="limit-button">
       <button id="lim">lim f(x)</button>
       <!-- The button the user presses on the main calculator -->
@@ -63,6 +71,9 @@
     <section class="function-overlay">
       <!-- Pop up to input user functions -->
       <!-- Piecewise functions allowed -->
+      <svg width="48" height="48">
+        <use href="#close-icon" class="function-overlay__close" />
+      </svg>
       <div class="function__expression user-input">
         <label for="userFunction">f(x) =</label>
         <input type="text" id="userFunction" placeholder="x**2" />
@@ -115,12 +126,25 @@
       let userFunction = document.querySelector("#userFunction");
       let lowerBound = document.querySelector("#lowerBound");
       let upperBound = document.querySelector("#upperBound");
+      let functionCloseBtn = document.querySelector(".function-overlay__close");
+
       function showFunctionInputOverlay() {
         functionOverlay.style.display = "flex";
+        setTimeout(() => {
+          functionOverlay.style.opacity = "1";
+          functionOverlay.style.transform = "translate(-50%, -50%)";
+        }, 50);
       }
       function hideFunctionInputOverlay() {
-        functionOverlay.style.display = "none";
+        functionOverlay.style.transform = "translate(-50%, -55%)";
+        functionOverlay.style.opacity = "0";
+        setTimeout(() => {
+          functionOverlay.style.display = "none";
+        }, 250);
       }
+      functionCloseBtn.addEventListener("click", () => {
+        hideFunctionInputOverlay();
+      });
       document.querySelector("#lim").addEventListener("click", () => {
         if (expressions.length == 0) {
           showFunctionInputOverlay();
@@ -134,8 +158,8 @@
           return;
         }
         addToExps(userFunction.value);
-        addToLWBs(lowerBound.value);
-        addToUPBs(upperBound.value);
+        addToLWBs(parseFloat(lowerBound.value));
+        addToUPBs(parseFloat(upperBound.value));
 
         window.open("#limit", "_self");
         hideFunctionInputOverlay();

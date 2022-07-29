@@ -1,7 +1,7 @@
 // Gets the limit of a piecewise function(x) as x approaches a value
 
 function getLimit(expressions, UPBs, LWBs, value) {
-  let x;
+  let x = value;
   let delta = 0.000000001;
 
   // return [expressions[0], UPBs[0], LWBs[0], value];
@@ -28,6 +28,8 @@ function getLimit(expressions, UPBs, LWBs, value) {
       currentExp = i;
     }
   }
+
+  console.log(expressions[currentExp], eval(expressions[currentExp]));
 
   if (isNaN(eval(expressions[currentExp]))) {
     x = value + delta;
