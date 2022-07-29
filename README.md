@@ -1,7 +1,13 @@
 # Limit
 
-Currently it works for piece wise functions, not at the intersection though apparently.
+Does not work for infinity
 
-Neither does it work for inifinity
+Currently works for:
 
-but it works for single and multiple functions
+- Piecewise functions (Within limits and maybe outside too)
+- Asymptotic Functions where Desmos gives undefined
+
+## TO-DO
+
+Update the layout,
+Store user settings (and f(x)'s) in local storage so they wont have to change all the time
