@@ -11,86 +11,60 @@
       href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital@1&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../../dist/CSS/normalize.css" />
+    <link rel="stylesheet" href="./limit.css" />
     <title>Limit</title>
-    <style>
-      input {
-        padding: 0.5rem;
-      }
-      button {
-        padding: 1rem 1.85rem;
-        border-radius: 8px;
-        border: 1px solid currentColor;
-        cursor: pointer;
-      }
-      .inline-input {
-        border: none;
-        border-bottom: 1px solid currentColor;
-        background: transparent;
-        width: 1ch;
-      }
-      .user-input {
-        display: flex;
-        flex-direction: column;
-      }
-      .function-overlay {
-        transition: opacity 250ms ease, transform 250ms ease;
-        display: none;
-        opacity: 0;
-        align-items: center;
-        justify-content: space-between;
-        position: fixed;
-        height: 80vh;
-        width: 80vw;
-        z-index: 1;
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(0.5rem);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-      }
-      section {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" height="0" width="0">
       <path
-        id="close-icon"
+        id="closeIcon"
         d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"
       />
     </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+      <path
+        id="saveIcon"
+        d="M3.02143 1.67143C2.66338 1.67143 2.32001 1.81366 2.06683 2.06683C1.81366 2.32001 1.67143 2.66338 1.67143 3.02143V14.9786C1.67143 15.3032 1.78842 15.6169 2.00093 15.8623C2.21345 16.1077 2.50728 16.2683 2.82857 16.3147V10.7357C2.82857 10.2754 3.01144 9.83389 3.33695 9.50838C3.66246 9.18287 4.10394 9 4.56428 9H13.4357C13.8961 9 14.3375 9.18287 14.663 9.50838C14.9886 9.83389 15.1714 10.2754 15.1714 10.7357V16.3147C15.4927 16.2683 15.7865 16.1077 15.9991 15.8623C16.2116 15.6169 16.3286 15.3032 16.3286 14.9786V4.97777C16.3286 4.61905 16.1866 4.27577 15.9328 4.02274L13.9773 2.06717C13.8519 1.9417 13.703 1.84216 13.5391 1.77426C13.3753 1.70636 13.1996 1.67141 13.0222 1.67143H12.8571V4.95C12.8571 5.17793 12.8122 5.40364 12.725 5.61423C12.6378 5.82481 12.5099 6.01616 12.3488 6.17733C12.1876 6.33851 11.9962 6.46636 11.7857 6.55359C11.5751 6.64082 11.3494 6.68571 11.1214 6.68571H6.10714C5.6468 6.68571 5.20531 6.50284 4.8798 6.17733C4.5543 5.85182 4.37143 5.41034 4.37143 4.95V1.67143H3.02143ZM5.52857 1.67143V4.95C5.52857 5.26937 5.78777 5.52857 6.10714 5.52857H11.1214C11.2749 5.52857 11.422 5.46761 11.5305 5.35911C11.639 5.25061 11.7 5.10344 11.7 4.95V1.67143H5.52857ZM14.0143 16.3286V10.7357C14.0143 10.5823 13.9533 10.4351 13.8448 10.3266C13.7363 10.2181 13.5892 10.1571 13.4357 10.1571H4.56428C4.41084 10.1571 4.26367 10.2181 4.15517 10.3266C4.04667 10.4351 3.98571 10.5823 3.98571 10.7357V16.3286H14.0143ZM0.514282 3.02143C0.514282 2.35649 0.778427 1.71879 1.24861 1.24861C1.71879 0.778427 2.35649 0.514282 3.02143 0.514282H13.023C13.6879 0.514322 14.3256 0.778493 14.7957 1.24868L16.7513 3.20425C17.2219 3.67483 17.4857 4.3128 17.4857 4.97777V14.9786C17.4857 15.6435 17.2216 16.2812 16.7514 16.7514C16.2812 17.2216 15.6435 17.4857 14.9786 17.4857H3.02143C2.35649 17.4857 1.71879 17.2216 1.24861 16.7514C0.778427 16.2812 0.514282 15.6435 0.514282 14.9786V3.02143Z"
+        fill="white"
+      />
+    </svg>
+
     <section class="limit-button">
-      <button id="lim">lim f(x)</button>
+      <div class="function-overlay-wrapper hidden">
+        <!-- Pop up to input user functions -->
+        <!-- Piecewise functions allowed -->
+        <div class="function-overlay">
+          <svg width="48" height="48" class="function-overlay__close">
+            <use href="#closeIcon" class="close-icon" />
+          </svg>
+          <div class="function__expression user-input">
+            <label for="userFunction">Expression</label>
+            <input type="text" id="userFunction" placeholder="x**2" />
+          </div>
+          <span class="for">for</span>
+          <div class="function__lower-bound user-input">
+            <label for="lowerBound">Lower Bound</label>
+            <input type="number" id="lowerBound" placeholder="2" />
+          </div>
+          <span class="interval-text"> <= <span class="math">x</span> < </span>
+          <div class="function__upper-bound user-input">
+            <label for="upperBound">Upper Bound</label>
+            <input type="number" id="upperBound" placeholder="4" />
+          </div>
+          <button id="saveFunction">
+            <span class="icon">
+              <svg height="18" width="18">
+                <use href="#saveIcon" class="save-icon" />
+              </svg> </span
+            >Save
+          </button>
+        </div>
+      </div>
+      <button id="lim" class="fab">lim f(x)</button>
       <!-- The button the user presses on the main calculator -->
     </section>
-    <section class="function-overlay">
-      <!-- Pop up to input user functions -->
-      <!-- Piecewise functions allowed -->
-      <svg width="48" height="48">
-        <use href="#close-icon" class="function-overlay__close" />
-      </svg>
-      <div class="function__expression user-input">
-        <label for="userFunction">f(x) =</label>
-        <input type="text" id="userFunction" placeholder="x**2" />
-      </div>
-      for
-      <div class="function__lower-bound user-input">
-        <label for="lowerBound">Lower Bound</label>
-        <input type="number" id="lowerBound" placeholder="2" />
-      </div>
-      < x <
-      <div class="function__upper-bound user-input">
-        <label for="upperBound">Upper Bound</label>
-        <input type="number" id="upperBound" placeholder="4" />
-      </div>
-      <button id="newFunction">+</button>
-      <button id="addToExps">Add</button>
-    </section>
+
     <section class="limit" id="limit">
       <div class="limit__symbol">
         <!-- Main limit function -->
@@ -110,67 +84,6 @@
       </div>
       <button id="calculateLimit">Calculate</button>
     </section>
-    <script type="module">
-      import {
-        expressions,
-        LWBs,
-        UPBs,
-        addToExps,
-        addToLWBs,
-        addToUPBs,
-      } from "./piecewise.js";
-
-      import { getLimit } from "./limit.js";
-
-      let functionOverlay = document.querySelector(".function-overlay");
-      let userFunction = document.querySelector("#userFunction");
-      let lowerBound = document.querySelector("#lowerBound");
-      let upperBound = document.querySelector("#upperBound");
-      let functionCloseBtn = document.querySelector(".function-overlay__close");
-
-      function showFunctionInputOverlay() {
-        functionOverlay.style.display = "flex";
-        setTimeout(() => {
-          functionOverlay.style.opacity = "1";
-          functionOverlay.style.transform = "translate(-50%, -50%)";
-        }, 50);
-      }
-      function hideFunctionInputOverlay() {
-        functionOverlay.style.transform = "translate(-50%, -55%)";
-        functionOverlay.style.opacity = "0";
-        setTimeout(() => {
-          functionOverlay.style.display = "none";
-        }, 250);
-      }
-      functionCloseBtn.addEventListener("click", () => {
-        hideFunctionInputOverlay();
-      });
-      document.querySelector("#lim").addEventListener("click", () => {
-        if (expressions.length == 0) {
-          showFunctionInputOverlay();
-        } else {
-          // In the future, replace this with append limit symbol to display
-          window.open("#limit", "_self");
-        }
-      });
-      document.querySelector("#addToExps").addEventListener("click", () => {
-        if (userFunction.value == "") {
-          return;
-        }
-        addToExps(userFunction.value);
-        addToLWBs(parseFloat(lowerBound.value));
-        addToUPBs(parseFloat(upperBound.value));
-
-        window.open("#limit", "_self");
-        hideFunctionInputOverlay();
-      });
-
-      document
-        .querySelector("#calculateLimit")
-        .addEventListener("click", () => {
-          let userLimitValue = document.querySelector("#userLimitValue");
-          console.log(getLimit(expressions, UPBs, LWBs, userLimitValue.value));
-        });
-    </script>
+    <script src="./limitInterface.js" type="module"></script>
   </body>
 </html>
