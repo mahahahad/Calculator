@@ -9,6 +9,12 @@ import {
 
 import { getLimit } from "./limit.js";
 
+// import { customElements } from "./functionElements.js";
+
+import "./functionElements.js";
+
+console.log(customElements);
+
 let functionOverlayWrapper = document.querySelector(
   ".function-overlay-wrapper"
 );
@@ -17,6 +23,40 @@ let userFunction = document.querySelector("#userFunction");
 let lowerBound = document.querySelector("#lowerBound");
 let upperBound = document.querySelector("#upperBound");
 let functionCloseBtn = document.querySelector(".function-overlay__close");
+
+let userFunctions = document.querySelector(".user-functions");
+
+function newExpression(HTMLElement) {
+  HTMLElement.innerHTML += `
+  <div class="function">
+  <div class="function__expression user-input">
+  <label for="userFunction">Expression</label>
+  <input type="text" id="userFunction" placeholder="x**2" />
+  </div>
+  <span class="for">for</span>
+  <div class="function__lower-bound user-input">
+  <label for="lowerBound">Lower Bound</label>
+  <input type="number" id="lowerBound" placeholder="2" />
+  </div>
+  <span class="interval-text">
+  &#60;= <span class="math">x</span> &#60;</span
+  >
+  <div class="function__upper-bound user-input">
+  <label for="upperBound">Upper Bound</label>
+  <input type="number" id="upperBound" placeholder="4" />
+  </div>
+  </div>
+  `;
+}
+
+// Initialize dialogue
+newExpression(userFunctions);
+
+let newExpressionButton = document.querySelector("#newExpression");
+
+newExpressionButton.addEventListener("click", () => {
+  newExpression(userFunctions);
+});
 
 function showFunctionInputOverlay() {
   functionOverlayWrapper.classList.toggle("hidden");

@@ -16,6 +16,7 @@
     <title>Limit</title>
   </head>
   <body>
+    <!-- SVG Icons for ease of access -->
     <svg xmlns="http://www.w3.org/2000/svg" height="0" width="0">
       <path
         id="closeIcon"
@@ -29,40 +30,62 @@
         fill="white"
       />
     </svg>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="newFunctionIcon" clip-path="url(#clip0_4_82)">
+        <path
+          d="M6.49284 0.333313H9.12442C9.35834 0.333313 9.4753 0.392572 9.4753 0.511091V16.1555C9.4753 16.2741 9.35834 16.3333 9.12442 16.3333H6.49284C6.25893 16.3333 6.14197 16.2741 6.14197 16.1555V0.511091C6.14197 0.392572 6.25893 0.333313 6.49284 0.333313Z"
+        />
+        <path
+          d="M0.328014 6.33331H15.9559C16.08 6.33331 16.142 6.45027 16.142 6.68419V9.31577C16.142 9.54969 16.08 9.66665 15.9559 9.66665H0.328014C0.203983 9.66665 0.141968 9.54969 0.141968 9.31577V6.68419C0.141968 6.45027 0.203983 6.33331 0.328014 6.33331Z"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_4_82">
+          <rect width="16" height="16" />
+        </clipPath>
+      </defs>
+    </svg>
 
+    <!-- Markup -->
     <section class="limit-button">
       <div class="function-overlay-wrapper hidden">
         <!-- Pop up to input user functions -->
         <!-- Piecewise functions allowed -->
         <div class="function-overlay">
+          <!-- Close icon -->
           <svg width="48" height="48" class="function-overlay__close">
             <use href="#closeIcon" class="close-icon" />
           </svg>
-          <div class="function__expression user-input">
-            <label for="userFunction">Expression</label>
-            <input type="text" id="userFunction" placeholder="x**2" />
+          <!-- Main inputs injected through JavaScript -->
+          <div class="user-functions"></div>
+          <!-- New expression button -->
+          <div class="button-container">
+            <button id="newExpression" class="outlined">
+              <span class="icon">
+                <svg height="18" width="18">
+                  <use href="#newFunctionIcon" class="new-function-icon" />
+                </svg> </span
+              >New Expression
+            </button>
+            <!-- Save button -->
+            <button id="saveFunction">
+              <span class="icon">
+                <svg height="18" width="18">
+                  <use href="#saveIcon" class="save-icon" />
+                </svg> </span
+              >Save
+            </button>
           </div>
-          <span class="for">for</span>
-          <div class="function__lower-bound user-input">
-            <label for="lowerBound">Lower Bound</label>
-            <input type="number" id="lowerBound" placeholder="2" />
-          </div>
-          <span class="interval-text"> <= <span class="math">x</span> < </span>
-          <div class="function__upper-bound user-input">
-            <label for="upperBound">Upper Bound</label>
-            <input type="number" id="upperBound" placeholder="4" />
-          </div>
-          <button id="saveFunction">
-            <span class="icon">
-              <svg height="18" width="18">
-                <use href="#saveIcon" class="save-icon" />
-              </svg> </span
-            >Save
-          </button>
         </div>
       </div>
-      <button id="lim" class="fab">lim f(x)</button>
       <!-- The button the user presses on the main calculator -->
+      <button id="lim" class="fab">lim f(x)</button>
     </section>
 
     <section class="limit" id="limit">
@@ -84,6 +107,7 @@
       </div>
       <button id="calculateLimit">Calculate</button>
     </section>
+    <!-- <script src="./functionElements.js"></script> -->
     <script src="./limitInterface.js" type="module"></script>
   </body>
 </html>

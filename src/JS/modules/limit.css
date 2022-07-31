@@ -58,10 +58,50 @@ section {
   justify-content: center;
   align-items: center;
 }
+.inline-input {
+  border: none;
+  border-bottom: 1px solid var(--Neutral10);
+  font-size: 12px;
+  max-width: 2ch;
+  padding: 0;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  height: 2ch;
+  font-family: monospace;
+}
+h1 {
+  margin: 0;
+}
+h2 {
+  font-size: 1rem;
+}
 .user-input {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+.user-functions {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  max-height: 200px;
+  width: 100%;
+  overflow-y: auto;
+}
+.user-function::webkit-scrollbar {
+  background: red;
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: red;
+}
+.function {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 .function-overlay-wrapper {
   height: 100%;
@@ -93,11 +133,21 @@ section {
   top: var(--DialogPadding);
   left: var(--DialogPadding);
 }
-#saveFunction {
+.button-container {
   position: absolute;
   bottom: var(--DialogPadding);
   right: var(--DialogPadding);
+}
+#saveFunction {
   padding: 12px 24px;
+}
+.outlined {
+  border: 1px solid var(--Neutral10);
+  background: transparent;
+  color: var(--Neutral10);
+}
+.new-function-icon {
+  fill: var(--Neutral10);
 }
 label {
   font-size: 12px;
@@ -122,4 +172,9 @@ button .icon {
   font-size: 24px;
   font-family: "Crimson Pro";
   font-style: italic;
+}
+.limit__symbol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
