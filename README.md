@@ -1,19 +1,35 @@
 # Scientific Mode
 
-Currently has only a limit calculator. But, will have other advanced features like integration, differentiation and so on shortly in the future.
+Currently offers these features:
+- Differentiation
+- Integration
+- Limits
 
 ## Limit Calculator
 
 As x approaches a certain value, this returns the value its function f(x) approaches.
 
-### Currently works for:
+### Works for:
 
-- Piecewise functions (Within limits and maybe outside too)
-- Asymptotic Functions where Desmos gives undefined
+- Piecewise functions
+- Asymptotic Functions (where Desmos gives undefined)
+- Infinity and 0
 
-### Does not work for:
+### Side-effects:
 
-- Infinity (+/-)
+- If value is outside range, evaluates first expression.
+
+## Differentiation
+
+Returns the derivative of a function f(x) at a user provided value
+
+## Integration
+
+Returns the area under a function f(x) using approximations with 'n' number of trapeziums
+
+### Works with:
+
+- Every function (including piecewise ones)
 
 ### TO-DO
 
