@@ -1,7 +1,9 @@
 // Gets the limit of a piecewise function(x) as x approaches a value
 
-function getLimit(expressions, UPBs, LWBs, value) {
-  let x = value;
+import { expressions, UPBs, LWBs } from "./piecewise.js";
+
+function getLimit(value) {
+  let x;
   let delta = 0.000000001;
 
   // return [expressions[0], UPBs[0], LWBs[0], value];
@@ -21,6 +23,7 @@ function getLimit(expressions, UPBs, LWBs, value) {
   }
 
   let currentExp = 0;
+
   // Check if user value lies within lower and upper bounds
   // If it does, evalute everything at current expression
   for (let i = 0; i <= expressions.length; i++) {
@@ -29,17 +32,15 @@ function getLimit(expressions, UPBs, LWBs, value) {
     }
   }
 
-  console.log(expressions[currentExp], eval(expressions[currentExp]));
-
   if (isNaN(eval(expressions[currentExp]))) {
     x = value + delta;
 
-    // let value1 = eval(expressions[currentExp]).toFixed(5);
+    // let value1 = eval(expressions[currentExp]);
     let value1 = parseFloat(eval(expressions[currentExp]).toFixed(5));
 
     x = value - delta;
 
-    // let value2 = eval(expressions[currentExp]).toFixed(5);
+    // let value2 = eval(expressions[currentExp]);
     let value2 = parseFloat(eval(expressions[currentExp]).toFixed(5));
 
     // return `${value1} - ${value2} = ${value1 - value2}`;
@@ -47,7 +48,7 @@ function getLimit(expressions, UPBs, LWBs, value) {
     let pointDistance = Math.abs(value2 - value1);
 
     if (pointDistance <= delta) {
-      return value1;
+      return value2;
     } else {
       return "Limit DNE";
     }

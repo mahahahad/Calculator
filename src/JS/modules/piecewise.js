@@ -1,3 +1,5 @@
+import { getLimit } from "./limit.js";
+
 // Sets up a piecewise function
 
 /*
@@ -8,11 +10,11 @@ Parameters:
 */
 
 // Array containing all user expressions
-let expressions = []; // ["x**2", "x+x", "x**x"]
-// Array containing the respective upper boundaries
-let UPBs = []; //[2 , 4, 6]
+let expressions = ["x**3", "x**2", "1/x"]; // ["x**2", "x+x", "x**x"]
 // Array containing the respective lower boundaries
-let LWBs = []; //[-2, -1 , 0]
+let LWBs = [-Infinity, 7, 12]; //[-2, -1 , 0]
+// Array containing the respective upper boundaries
+let UPBs = [5, 11, Infinity]; //[2 , 4, 6]
 
 // expected output is 1
 // console.log(getLimit(expressions, UPBs, LWBs, 4.5));
