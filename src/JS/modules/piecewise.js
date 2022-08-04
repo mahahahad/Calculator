@@ -1,5 +1,3 @@
-import { getLimit } from "./limit.js";
-
 // Sets up a piecewise function
 
 /*

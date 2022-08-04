@@ -1,3 +1,11 @@
+// import {
+//   expressions,
+//   LWBs,
+//   UPBs,
+//   addToExps,
+//   addToLWBs,
+//   addToUPBs,
+// } from "./piecewise.js";
 import {
   expressions,
   LWBs,
@@ -5,15 +13,10 @@ import {
   addToExps,
   addToLWBs,
   addToUPBs,
-} from "./piecewise.js";
+} from "./piecewise";
 
-import { getLimit } from "./limit.js";
-
-// import { customElements } from "./functionElements.js";
-
-import "./functionElements.js";
-
-console.log(customElements);
+// import { getLimit } from "./limit.js";
+import { getLimit } from "./limit";
 
 let functionOverlayWrapper = document.querySelector(
   ".function-overlay-wrapper"

@@ -1,6 +1,7 @@
 // Gets the limit of a piecewise function(x) as x approaches a value
 
-import { expressions, UPBs, LWBs } from "./piecewise.js";
+// import { expressions, UPBs, LWBs } from "./piecewise.js";
+import { expressions, UPBs, LWBs } from "./piecewise";
 
 function getLimit(value) {
   let x;

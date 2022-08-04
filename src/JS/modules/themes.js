@@ -1,10 +1,11 @@
-// import { darkModeCheckbox, moreBtn, numpad, HTMLElement } from "./DOMElements"; FOR WEBPACK
-import {
-  darkModeCheckbox,
-  moreBtn,
-  numpad,
-  HTMLElement,
-} from "./DOMElements.js";
+// FOR WEBPACK
+import { darkModeCheckbox, moreBtn, numpad, HTMLElement } from "./DOMElements";
+// import {
+//   darkModeCheckbox,
+//   moreBtn,
+//   numpad,
+//   HTMLElement,
+// } from "./DOMElements.js";
 
 // Initial colours
 let hue = 210;

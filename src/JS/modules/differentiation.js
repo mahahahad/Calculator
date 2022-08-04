@@ -1,4 +1,5 @@
-import { expressions, UPBs, LWBs } from "./piecewise.js";
+// import { expressions, UPBs, LWBs } from "./piecewise.js";
+import { expressions, UPBs, LWBs } from "./piecewise";
 
 function differentiate(value) {
   let currentExp = 0;

@@ -1,4 +1,5 @@
-import { expressions, UPBs, LWBs } from "./piecewise.js";
+// import { expressions, UPBs, LWBs } from "./piecewise.js";
+import { expressions, UPBs, LWBs } from "./piecewise";
 
 function g_integrate(expression, l, u) {
   let area = 0;

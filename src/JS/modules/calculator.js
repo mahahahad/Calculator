@@ -1,16 +1,6 @@
 // Contains main calculator logic
 
 // FOR WEBPACK
-// import {
-//   resultActive,
-//   resultPrevious,
-//   numbers,
-//   equalBtn,
-//   ACBtn,
-//   deleteBtn,
-//   operators,
-// } from "./calculatorVariables";
-// Seperate file containing all the variables to be organized
 import {
   resultActive,
   resultPrevious,
@@ -19,7 +9,17 @@ import {
   ACBtn,
   deleteBtn,
   operators,
-} from "./calculatorVariables.js";
+} from "./calculatorVariables";
+// Seperate file containing all the variables to be organized
+// import {
+//   resultActive,
+//   resultPrevious,
+//   numbers,
+//   equalBtn,
+//   ACBtn,
+//   deleteBtn,
+//   operators,
+// } from "./calculatorVariables.js";
 
 class Calculator {
   constructor(currentNumberElement, previousNumberElement) {
