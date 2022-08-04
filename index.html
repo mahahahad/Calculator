@@ -13,39 +13,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/CSS/main.css" />
-    <style>
-:root {
-
-
-  --Neutral10: #1c1b1f;
-  --Neutral99: #fffbfe;
-
-  --Primary10: #21005d;
-  --Primary20: #381e72;
-  --Primary30: #4f378b;
-  --Primary40: #6750a4;
-  --Primary50: #7f67be;
-  --Primary60: #9a82db;
-  --Primary70: #b69df8;
-  --Primary80: #d0bcff;
-  --Primary90: #eaddff;
-  --Primary100: #ffffff;
-
-  --Surface3: hsla(315, 100%, 99%, 1);
-
-  /* Light Mode Variables */
-
-  --background: var(--Neutral99);
-  --on-background: var(--Neutral10);  
-
-  --outline: var(--Neutral50);
-
-  --primary: var(--Primary40);
-  --on-primary: var(--Primary100);
-  --primary-container: var(--Primary90);
-  --on-primary-container: var(--Primary10);
-}
-    </style>
     <title>Calculator</title>
   </head>
   <body>
@@ -60,31 +27,8 @@
       <path
         id="chevron-up-icon"
         d="m12.586 26.586 2.828 2.828L24 20.828l8.586 8.586 2.828-2.828L24 15.172 12.586 26.586Z"
-        fill="var(--on-primary)"
+        fill="var(--on-primary-container)"
       />
-    </svg>
-
-    <!-- Menu -->
-
-    <svg
-      id="menu-icon-complete"
-      width="0"
-      height="0"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        id="menu-icon"
-        d="M21 6V8H3V6H21ZM3 18H21V16H3V18ZM3 13H21V11H3V13Z"
-        fill="var(--on-background)"
-      />
-      <text
-        x="28"
-        y="19"
-        id="menu-icon__text"
-        style="font: 600 1.3rem 'Plus Jakarta Sans'; fill: var(--on-background)"
-      >
-        Menu
-      </text>
     </svg>
 
     <!-- Calculator Markup -->
@@ -106,14 +50,9 @@
           width="48"
           height="48"
           viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
           class="more__chevron-up"
         >
-          <path
-            d="M12.586 26.586L15.414 29.414L24 20.828L32.586 29.414L35.414 26.586L24 15.172L12.586 26.586Z"
-            fill="var(--on-background)"
-          />
+          <use href="#chevron-up-icon" />
         </svg>
         <div class="more__dark-mode-container">
           <label for="isDarkMode">Dark Mode</label>
@@ -302,13 +241,14 @@
             >
               <path
                 d="M0 4.5V7.16563H16V4.5H0ZM0 12.5H16V9.83438H0V12.5Z"
-                fill="var(--on-primary)"
+                fill="var(--on-primary-container)"
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-    <script src="./dist/JS/index.js"></script>
+    <!-- <script src="./dist/JS/index.js"></script> -->
+    <script src="./src/JS/index.js" type="module"></script>
   </body>
 </html>

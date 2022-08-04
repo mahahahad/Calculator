@@ -1,13 +1,29 @@
 @import url(./normalize.css);
-
 :root {
   --result__display-height: 30%;
   --calc__button-gap: 0.5rem;
 
-  --color-background: #f5f5f5;
-  --color-text: #000000;
-  --color-primary: hsl(78, 67%, 60%);
-  --color-primary--transparent: hsl(78, 87%, 80%);
+  // Initial colour scheme which gets replaced by JavaScript
+  --Neutral10: #1c1b1f;
+  --Neutral99: #fffbfe;
+
+  --Primary10: #21005d;
+  --Primary20: #381e72;
+  --Primary30: #4f378b;
+  --Primary40: #6750a4;
+  --Primary50: #7f67be;
+  --Primary60: #9a82db;
+  --Primary70: #b69df8;
+  --Primary80: #d0bcff;
+  --Primary90: #eaddff;
+  --Primary100: #ffffff;
+
+  --Surface1: #4f378b0d;
+  --Surface2: #4f378b14;
+  --Surface3: #4f378b1c;
+  --Surface4: #4f378b1f;
+  --Surface5: #4f378b24;
+
   --black-transparent: rgba(0, 0, 0, 0.1);
 
   --easing: cubic-bezier(0.18, 0.6, 0, 0.88);
@@ -16,10 +32,11 @@
   font-family: "Plus Jakarta Sans";
   transition: 300ms var(--easing);
   transition-property: background-color;
-  color: var(--color-text) !important;
+  color: var(--on-background);
 }
 ::selection {
-  background-color: var(--color-primary);
+  background-color: var(--primary);
+  color: var(--on-primary);
 }
 body {
   height: 100vh;
@@ -33,5 +50,5 @@ h1 {
 button,
 .more {
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--on-background);
 }

@@ -1,3 +1,31 @@
+.more {
+  width: 100%;
+  height: calc(10% + 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  position: absolute;
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
+  top: calc(var(--result__display-height) - 8px);
+  box-shadow: 0 -4px 0.5rem -0.4rem var(--black-transparent);
+  border-radius: 12px;
+}
+.more.expanded {
+  transform: translateY(-10px);
+}
+.more__chevron-up {
+  height: 2rem;
+  margin-top: 0.5%;
+}
+.more__dark-mode-container {
+  padding-bottom: 3rem;
+}
+.more .checkbox {
+  margin-left: 0.5rem;
+}
 .numpad.condensed {
   height: calc(90% - var(--result__display-height));
 }
@@ -6,7 +34,7 @@
   overflow: hidden;
 }
 .oper-equal {
-  background-color: var(--color-primary);
+  background-color: var(--primary-container);
   box-shadow: 0 8px 1.3rem -0.6rem var(--black-transparent);
   border-radius: 3rem;
   margin: 1rem;

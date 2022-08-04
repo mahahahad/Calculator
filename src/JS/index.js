@@ -1,4 +1,7 @@
-import { darkModeCheckbox, moreBtn, numpad } from "./modules/DOMElements";
-import "./modules/calculator";
-import "./modules/themes";
-import "./modules/tabRoving";
+// FOR WEBPACK
+// import "./modules/themes";
+// import "./modules/calculator";
+// import "./modules/tabRoving";
+import "./modules/themes.js";
+import "./modules/calculator.js";
+import "./modules/tabRoving.js";
